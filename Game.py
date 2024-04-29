@@ -19,8 +19,12 @@ class Game:
                     x= input("Do you want to continue? (Y/N)")
                     if x.lower()=="n":
                         self._contenueGame=False
+        except ValueError:
+            print("Can not cconvert literal to number!")
+        except IndexError as error:
+            print(error.args[0])
         except Exception as error:
-            print(error)
+            print(error.args[0])
 
     def startRound(self): # start the round
         x= input("Select Rock (0), Paper (1), or Scissors (2) !")
@@ -43,7 +47,7 @@ class Game:
                     print("You lost ! good luck")
                 
         else:
-            raise Exception("Sorry, number is out of rang !!") # raise an excption if the user selected number out of range 
+            raise IndexError("Sorry, number is out of rang !!") # raise an excption if the user selected number out of range 
         
 
 
